@@ -1,21 +1,14 @@
-def fibonacci(n)
-    a = 0
-    b = 1
-    n.times do
-  temp = a
-  a = b
-  b = temp + b
-    end
+nums = [0, 1]
 
-    return a
+while true
+  n = nums[-1] + nums[-2]
+
+  if n <= 100
+    nums << n
+  else
+    break
+  end
 end
 
-array = []
-15.times do |n|
-    result = fibonacci(n)
-    array.push(result)
-
-    print array
-end
-
+puts nums
 
