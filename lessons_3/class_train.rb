@@ -2,39 +2,54 @@ class Train
   attr_reader :number
   attr_reader :type
   attr_reader :wagon_count
+  attr_accessor :speed
 
-  def initialize(number, type = 'passanger', wagon_count = 1)
+  def initialize(number, type, wagon_count = 1)
     @number = number
     @type = type
     @wagon_count = wagon_count
+    @route = nil
+    @count = 0
   end
 
-  def acceleration
-    @speed = 10
-  end
-
-  def speed
-    @speed = speed()
+  def speed_up
+    @speed += 1
   end
 
   def brake
     @speed = 0
   end
 
-  def hitch
-    wagon_count += 1 if speed = 0
+  def add_wagon
+    wagon_count += 1 if @speed = 0
   end
 
-  def unhook
-    wagon_count -= 1 if speed = 0
+  def delete_wagon
+    wagon_count -= 1 if @speed = 0
   end
 
-  def way <<
-
+  def route_train(route)
+    @route = route
   end
 
-  def move
-
+  def next_station
+    @count += 1 if @count != (@route.station.size - 1)
+    end
   end
 
+  def last_station
+    @count -= 1 if @count != 0
+  end
+
+  def show_current_station
+    return @route.station[@count].name
+  end
+
+  def show_next_station
+    return @route.station[@count + 1].name if @count != (@route.station.size - 1)
+  end
+
+  def show_last_station
+    return @route.stations[@count - 1].name unless @count.zero?
+  end
 end

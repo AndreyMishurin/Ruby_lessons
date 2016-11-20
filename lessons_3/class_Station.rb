@@ -10,15 +10,12 @@ class Station
     @trains << train
   end
 
-  def show_trains(type)
-    trains = []
-    @trains.each {  |train| trains << train if train.type == 'freight' }
-    trains.each { |train| puts train.name }
+  def show_trains(type = nil)
+   return @trains if type.nil?
   end
 
-  def dispatch_train
-
-    trains.delete_at(train.name)
+  def dispatch_train(train)
+    trains.delete(train) if trains
   end
 end
 
