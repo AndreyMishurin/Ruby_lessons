@@ -25,6 +25,7 @@ class Train
   end
 
   def delete_wagon
+    if @wagon > 0
     wagon_count -= 1 if @speed = 0
   end
 
@@ -42,14 +43,14 @@ class Train
   end
 
   def show_current_station
-    return @route.station[@count].name
+    @route.station[@count].name
   end
 
   def show_next_station
-    return @route.station[@count + 1].name if @count != (@route.station.size - 1)
+    @route.station[@count + 1].name if @count != (@route.station.size - 1)
   end
 
   def show_last_station
-    return @route.stations[@count - 1].name unless @count.zero?
+    @route.stations[@count - 1].name unless @count.zero?
   end
 end
