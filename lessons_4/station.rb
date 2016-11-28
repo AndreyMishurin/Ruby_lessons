@@ -17,6 +17,7 @@ class Station
   def show_trains_type(type)
     count_train = 0
     @trains.each {|train| count_train +=1 if train.type == type}
+    puts "Количество поездов типа #{type}: #{count_train}."
   end
 
   def dispatch_train(train)

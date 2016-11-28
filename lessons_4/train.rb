@@ -21,7 +21,11 @@ class Train
   end
 
   def add_wagon
-    @wagon.push(wagon) if @speed = 0
+    if @speed == 0
+      @wagon << (wagon) if self.type == wagon.type ? @wagon << wagon : (puts "Типы не совпадают")
+    else
+      puts "Поезд не остановлен"
+    end
   end
 
   def delete_wagon
@@ -36,7 +40,6 @@ class Train
 
   def next_station
     @count += 1 if @count != (@route.station.size - 1)
-    end
   end
 
   def last_station
