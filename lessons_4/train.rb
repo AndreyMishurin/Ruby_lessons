@@ -22,7 +22,8 @@ class Train
 
   def add_wagon
     if @speed == 0
-      @wagon << (wagon) if self.type == wagon.type ? @wagon << wagon : (puts "Типы не совпадают")
+      return puts "Типы не совпадают" if self.type != wagon.type
+      @wagon << wagon
     else
       puts "Поезд не остановлен"
     end
