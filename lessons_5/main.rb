@@ -1,3 +1,4 @@
+require_relative 'company_name'
 require_relative 'train'
 require_relative 'cargo_train'
 require_relative 'passenger_train'
@@ -60,6 +61,9 @@ def create_station
 end
 
 def create_train
+  @trains ||= {}
+  @index_trains ||= 0
+
   while true
     puts 'Тип поезда:'
     puts '1. Грузовой'
@@ -78,9 +82,15 @@ def create_train
       when 2
         puts 'Cоздаем пассажирский поезд, введите номер:'
         print ' > '
-        number = gets.strip
-        @trains[@index_trains] = PassengerTrain.new(number)
-        @index_trains += 1
+        begin
+          number = gets.strip
+          @trains[@index_trains] = PassengerTrain.new(number)
+          @index_trains += 1
+          puts "Создан поезд с номером #{}."
+        rescue RuntimeError => e
+          puts e.message
+          retry
+        end
       when 0
         puts @trains
         start

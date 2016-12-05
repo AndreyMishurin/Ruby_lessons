@@ -7,6 +7,8 @@ class Train
 
   @@trains = {}
 
+  NUMBER_FORMAT = /^[a-zA-Z0-9]{3}-?[a-zA-Z0-9]{2}$/
+
   def initialize(number, type, speed, wagon_count = 1)
     @number = params[:number]
     @type = type
@@ -31,10 +33,10 @@ class Train
 
   def add_wagon
     if @speed == 0
-      return puts "Типы не совпадают" if self.type != wagon.type
+      return if self.type != wagon.type
       @wagon << wagon
     else
-      puts "Поезд не остановлен"
+      false
     end
   end
 
@@ -76,6 +78,19 @@ class Train
     type == :passenger
   end
 
+  def valid?
+    validate!
+  rescue
+    false
+  end
+
+  protected
+
+    raise "Номер поезда не может быть короче 5 символов" if number.to_s.size < 5
+    raise "Номер поезда имеет неправильный формат" if number !~ NUMBER_FORMAT
+    true
+  end
+
   private    #методы используемые внутри класса для проверки, снаружи не вызываем
 
   def braked?
@@ -86,7 +101,6 @@ class Train
     if @route
       true
     else
-      puts 'Нет маршрута.'
       false
     end
   end

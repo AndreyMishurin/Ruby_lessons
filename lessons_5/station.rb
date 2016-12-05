@@ -30,5 +30,17 @@ class Station
   def self.all
     @@trains_list
   end
+
+  def valid?
+    validate!
+  rescue
+    false
+  end
+
+  protected
+
+  def validate!
+    raise "Название станции не может быть пустым" if name == ''
+  end
 end
 
