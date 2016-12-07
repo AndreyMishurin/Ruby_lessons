@@ -7,6 +7,7 @@ class Station
   def initialize(name)
     @name_station = name
     @trains = []
+    validate!
   end
 
   def add_train(train)
@@ -40,7 +41,7 @@ class Station
   protected
 
   def validate!
-    raise "Название станции не может быть пустым" if name == ''
+    raise "Название станции не может быть пустым" if @name_station == ''
   end
 end
 
