@@ -86,6 +86,7 @@ class Train
 
   protected
 
+  def validate!
     raise "Номер поезда не может быть короче 5 символов" if number.to_s.size < 5
     raise "Номер поезда имеет неправильный формат" if number !~ NUMBER_FORMAT
     true
