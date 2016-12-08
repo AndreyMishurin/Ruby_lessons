@@ -16,8 +16,8 @@ class Train
     @wagon = []
     @count = 0
     @speed = speed
-    @@trains[@number] = self
     validate!
+    @@trains[@number] = self
   end
 
   def self.find(number)

@@ -8,6 +8,7 @@ class Station
     @name_station = name
     @trains = []
     validate!
+    @@trains_list << self
   end
 
   def add_train(train)
