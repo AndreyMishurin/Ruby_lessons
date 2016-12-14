@@ -32,6 +32,10 @@ class Station
     trains.delete(train) if trains
   end
 
+  def take_block
+    @trains_list.each {|train| yield(train)}
+  end
+
   def self.all
     @@trains_list
   end

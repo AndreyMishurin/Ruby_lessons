@@ -23,7 +23,7 @@ class Main
     puts 'Введите номер пункта меню:'
     puts '1. Создать станцию'
     puts '2. Создать поезд'
-    puts '3. Использовать текущий поезд'
+    puts '3. Работать с уже существующим поездом'
     puts '4. Показать все станции и поезда'
 
     selection = gets.chomp.to_i
@@ -148,6 +148,10 @@ class Main
 
       end
     end
+  end
+
+  def iterator(object)
+    object.each {|obj| yield(obj)}
   end
 
   def create_wagon(train)

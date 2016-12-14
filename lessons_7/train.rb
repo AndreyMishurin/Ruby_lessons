@@ -14,7 +14,7 @@ class Train
     @number = params[:number]
     @type = type
     @route = nil
-    @wagon = []
+    @wagons = []
     @count = 0s
     @speed = speed
     validate!
@@ -25,6 +25,10 @@ class Train
     @@trains[number]
   end
 
+  def take_block
+    @wagons.each {|wagon| yield(wagon)}
+  end
+
   def speed_up(speed)
     @speed += 1
   end
@@ -33,10 +37,10 @@ class Train
     @speed = 0
   end
 
-  def add_wagon
+  def add_wagon(wagon)
     if @speed == 0
       return if self.type != wagon.type
-      @wagon << wagon
+      @wagons << wagon
     else
       false
     end
@@ -44,7 +48,7 @@ class Train
 
   def delete_wagon
     if @speed != 0
-      @wagon.pop unless @wagon.empty?
+      @wagons.pop unless @wagons.empty?
     end
   end
 
