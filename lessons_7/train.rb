@@ -1,5 +1,6 @@
 class Train
   include Company_name
+  include TakeBlock
 
   attr_reader :number
   attr_reader :type
@@ -69,10 +70,6 @@ class Train
 
   def show_last_station
     @route.stations[@count - 1].name unless @count.zero?
-  end
-
-  def wagon_block
-    @wagon.each {|wagon| yield(wagon)}
   end
 
   def cargo?

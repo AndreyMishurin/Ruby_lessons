@@ -1,5 +1,6 @@
 class Train
   include Company_name
+  include TakeBlock
 
   attr_reader :number
   attr_reader :type
@@ -14,7 +15,7 @@ class Train
     @type = type
     @route = nil
     @wagon = []
-    @count = 0
+    @count = 0s
     @speed = speed
     validate!
     @@trains[@number] = self

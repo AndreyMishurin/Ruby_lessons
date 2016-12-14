@@ -1,4 +1,7 @@
 class Station
+
+  include TakeBlock
+
   attr_writer :name_station
   attr_reader :trains_list
 
@@ -27,10 +30,6 @@ class Station
 
   def dispatch_train(train)
     trains.delete(train) if trains
-  end
-
-  def trains_block
-    @trains_list.each {|train| yield(train)}
   end
 
   def self.all

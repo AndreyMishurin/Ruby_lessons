@@ -28,8 +28,8 @@ class Route
 protected
 
   def validate!(start_station, finish_station)
-    raise "Станция отправления должна быть типа "Station"." if start_station.class != Station
-    raise "Станция отправления должна быть типа "Station"." if finish_station.class != Station
+    raise "Станция отправления должна быть типа Station" if start_station.class != Station
+    raise "Станция отправления должна быть типа Station" if finish_station.class != Station
     true
   end
 

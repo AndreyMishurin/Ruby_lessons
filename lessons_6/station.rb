@@ -1,4 +1,7 @@
 class Station
+
+  include TakeBlock
+
   attr_writer :name_station
   attr_reader :trains_list
 

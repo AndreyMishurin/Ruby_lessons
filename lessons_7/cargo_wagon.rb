@@ -4,10 +4,11 @@ class CargoWagon < Wagon
   attr_reader :capacity
 
   def initialize(capacity)
-  @type = :cargo
-  @capacity = capacity.to_i
-  @free_capacity = capacity.to_i
-  @occupied_capacity = 0
+    @type = :cargo
+    @capacity = capacity.to_i
+    @free_capacity = capacity.to_i
+    @occupied_capacity = 0
+  end
 
   def take_capacity(volume)
     return if @occupied_capacity >= @capacity
